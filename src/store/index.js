@@ -18,7 +18,8 @@ export default new Vuex.Store({
         oldInfo.count +=1
       }else {
         info.count = 1
-        // info.checked = true
+        // 点击
+        info.checked = false
         state.cartList.push(info)
       }
     }

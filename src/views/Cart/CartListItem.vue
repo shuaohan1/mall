@@ -1,7 +1,7 @@
 <template>
   <div class="shop-item">
     <div class="item-selector">
-      <cart-checkbox/>
+      <check-button :isChecked="itemInfo.checked" @checkBtnClick="checkClick"/>
     </div>
     <div class="item-img">
       <img :src="itemInfo.image" alt="商品图片">
@@ -17,15 +17,21 @@
   </div>
 </template>
 <script>
-import CartCheckbox from './CartCheckbox.vue'
+import CheckButton from './CheckButton.vue'
 export default {
-  components: { CartCheckbox },
+  components: { CheckButton },
   props:{
     itemInfo:{
       type:Object,
       defaule(){
         return {}
       }
+    }
+  },
+  methods: {
+    checkClick(){
+      console.log(this.itemInfo);
+      this.itemInfo.checked = !this.itemInfo.checked
     }
   },
 }

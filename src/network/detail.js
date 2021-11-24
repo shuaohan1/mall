@@ -23,11 +23,12 @@ export class Goods {
     this.title = itemInfo.title
     this.desc = itemInfo.desc
     this.newPrice = itemInfo.price
-    this.oldPrice = itemInfo.oldPrice
+    this.oldPrice = itemInfo.lowPrice
     this.discount = itemInfo.discountDesc
     this.columns = columns
     this.services = services
     this.realPrice = itemInfo.lowNowPrice
+    console.log(this.oldPrice);
   }
 }
 // 提取商家数据

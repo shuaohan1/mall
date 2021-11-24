@@ -1,6 +1,6 @@
 <template>
     <div>
-      <div class="icon-selector" :class="{'selector-active': checked}" @click="selectItem">
+      <div class="icon-selector" :class="{check: isChecked}" @click="selectItem">
         <img src="../../assets/img/cart/tick.svg" alt="">
       </div>
     </div>
@@ -15,21 +15,21 @@
         default: false
       }
     },
-    data () {
-		  return {
-		    checked: this.isChecked
-      }
-    },
+    // data () {
+		//   return {
+		//     checked: this.isChecked
+    //   }
+    // },
     methods: {
-      selectItem: function () {
+      selectItem () {
         this.$emit('checkBtnClick')
       }
     },
-    watch: {
-		  value: function (newValue) {
-        this.checked = newValue;
-      }
-    }
+    // watch: {
+		//   value: function (newValue) {
+    //     this.checked = newValue;
+    //   }
+    // }
 	}
 </script>
 
@@ -44,7 +44,7 @@
     cursor: pointer;
   }
 
-  .selector-active {
+  .check {
     background-color: #f00;
     border-color: #f00;
   }

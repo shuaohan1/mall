@@ -4,6 +4,7 @@
       <div slot="center">购物车({{cartCount}})</div>
     </navbar>
     <cart-list class="cart-list" :cart-list="cartList"/>
+    <bottom-bar/>
     <tabber/>
   </div>
 </template>
@@ -12,6 +13,7 @@
 import Navbar from '../components/content/Navbar.vue'
 import CartList from './Cart/CartList.vue'
 import Tabber from './Tabber.vue'
+import BottomBar from './Cart/BottomBar.vue'
 export default {
   data () {
     return {}
@@ -19,7 +21,9 @@ export default {
   components:{
     Tabber,
     Navbar,
-    CartList
+    CartList,
+    BottomBar,
+    BottomBar
   },
   computed:{
     cartList(){
@@ -46,7 +50,7 @@ export default {
 }
 
 .cart-list {
-  width: 100vw;
+  width: 100%;
   height: 100vh;
 }
 </style>

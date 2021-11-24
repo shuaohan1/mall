@@ -7,7 +7,6 @@ import MintUI from 'mint-ui'
 import ElementUI from 'element-ui'
 import Vant from 'vant'
 
-
 import 'vant/lib/index.css';
 import 'mint-ui/lib/style.css'
 // 导入mui框架样式
