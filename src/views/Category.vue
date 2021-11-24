@@ -1,14 +1,22 @@
 <template>
-  <div>这是分类页面</div>
+  <div class="content">
+    这是分类页面
+    <tabber/>
+  </div>
 </template>
 
 <script>
+import Tabber from './Tabber.vue'
 export default {
   data () {
     return {}
   },
-  created () {},
+  created () {
+  },
   mounted () {},
+  components:{
+    Tabber
+  },
   methods: {}
 }
 </script>

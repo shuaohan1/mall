@@ -5,6 +5,7 @@ import Tabber from '../views/Tabber.vue'
 import Shopcart from '../views/Shopcart.vue'
 import Category from '../views/Category.vue'
 import User from '../views/User.vue'
+import Detail from '../views/detail/Detail.vue'
 
 Vue.use(VueRouter)
 
@@ -34,6 +35,9 @@ const routes = [
   {
     path: '/user',
     component: User,
+  },{
+    path:'/detail/:iid',
+    component:Detail
   }
 ]
 
