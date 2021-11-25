@@ -14,6 +14,8 @@ import Navbar from '../components/content/Navbar.vue'
 import CartList from './Cart/CartList.vue'
 import Tabber from './Tabber.vue'
 import BottomBar from './Cart/BottomBar.vue'
+// getters的映射的局部属性
+import {mapGetters} from 'vuex'
 export default {
   data () {
     return {}
@@ -26,12 +28,22 @@ export default {
     BottomBar
   },
   computed:{
-    cartList(){
-      return this.$store.getters.cartList
-    },
-    cartCount(){
-      return this.$store.getters.cartCount
-    }
+    // getters的映射的局部属性
+    // 两种方法 
+    // 1.数组 一一对应的名字 是getters里面的
+    ...mapGetters(['cartCount','cartList']),
+    // 2.对象 名字是自定义的
+    // ...mapGetters({
+    //   count:'cartCount',
+    //   list:'cartList'
+    // })
+    
+    // cartList(){
+    //   return this.$store.getters.cartList
+    // },
+    // cartCount(){
+    //   return this.$store.getters.cartCount
+    // }
   },
   methods: {}
 }

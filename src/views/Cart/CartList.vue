@@ -8,6 +8,7 @@
 <script>
 import Scroll from '../../components/content/Scroll.vue' 
 import CartListItem from './CartListItem.vue'
+
 export default {
   props:{
     cartList:{
@@ -16,6 +17,8 @@ export default {
         return []
       }
     }
+  },
+  computed:{
   },
   components:{
     Scroll,

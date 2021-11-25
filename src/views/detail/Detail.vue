@@ -12,7 +12,7 @@
       <detail-comment-info ref="comment" :comment-info="commentInfo"/>
       <goods-list ref="recommend" :goods="recommend"/>
     </scroll>
-    <detail-botton-bar @addToCart="addCart"/>
+    <detail-botton-bar @addToCart="addToCart"/>
     <!-- 回调顶部 -->
     <back-top @click.native="backClick" v-show="isShow" />
   </div>
@@ -42,6 +42,11 @@ import BackTop from '../../components/content/BackTop.vue'
 import {debounce} from '../../components/content/utils'
 import Scroll from '../../components/content/Scroll.vue'
 
+//映射关系
+import {mapActions} from 'vuex'
+
+import { Toast } from 'vant';
+
 import {getDetail,getRecommend,Goods,Shop,GoodsParam} from '../../network/detail'
 export default {
   name:'Detail',
@@ -56,12 +61,14 @@ export default {
       paramInfo:{},
       commentInfo: {},
       recommend:[],
-      // 获取图片加载完成
+      // 获取所有主题的offsetTop
       themeTops:[],
+      // 获取加载完成主题的offsetTop
       getThemeTopY:null,
-      // 
+      // 获取上拉 
       currentIndex:0,
-      isShow:false
+      // 回到顶部
+      isShow:false,
     }
   },
   components:{
@@ -98,7 +105,11 @@ export default {
         this.themeTops.push(Number.MAX_VALUE)
       })
   },
+  activated() {
+    this.$refs.scroll.refresh()
+  },
   methods: {
+    ...mapActions(['addCart']),
     // 2.根据iid请求详情数据
     getDetail(){
       getDetail(this.iid).then(res=>{
@@ -140,7 +151,7 @@ export default {
       // console.log(index);
       this.$refs.scroll.scrollTo(0,-this.themeTops[index],200)
     },
-    // 下拉获取y值的位置
+    // 下拉获取y值的位置 到对应的位置上面
     contentScroll(position){
       // 1.获取y值
       const positionY = -position.y
@@ -162,18 +173,25 @@ export default {
       this.$refs.scroll.scrollTo(0,0)
     },
     // 加入购物车
-    addCart(){
-      console.log('-------');
-      // 1.获取展示的信息
+    addToCart(){
+      // 1.获取购物车需要的展示的信息
       const product = {}
       product.iid = this.iid
       product.image = this.topImages[0]
       product.title = this.goods.title
       product.desc = this.goods.desc
       product.price = this.goods.oldPrice
-      console.log(product.price);
-      // 2.添加到Store中
-      this.$store.commit('addCart',product)
+
+      // 2.将商品添加到Store 购物车中（1.actions会返回一个Promise 2.映射mapActions）
+      // 2.1. 使用映射关系
+      this.addCart(product).then(res=>{
+        Toast('加入购物车成功 亲~');
+      })
+
+      // 2.2. 常规
+      // this.$store.dispatch('addCart',product).then(res=>{
+      //   Toast('提示内容');
+      // })
     }
   },
 }

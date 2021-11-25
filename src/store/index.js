@@ -8,20 +8,11 @@ export default new Vuex.Store({
     cartList:[]
   },
   mutations: {
-    addCart(state,info){
-      console.log(info);
-      // 1.查看是否添加过
-      // find()函数用来查找目标元素，找到就返回该元素，找不到返回undefined
-      const oldInfo = state.cartList.find(item=>item.iid === info.iid)
-      // 2. 加一或者新添加
-      if(oldInfo) {
-        oldInfo.count +=1
-      }else {
-        info.count = 1
-        // 点击
-        info.checked = false
-        state.cartList.push(info)
-      }
+    addCounter(state,info){
+      info.count++
+    },
+    addToCart(state,info){
+      state.cartList.push(info)
     }
   },
   getters:{
@@ -33,6 +24,27 @@ export default new Vuex.Store({
     },
   },
   actions: {
+    addCart(context,info){
+      console.log(info);
+      // 1.查找之前数组中是否有该商品
+      // find()函数用来查找目标元素，找到就返回该元素，找不到返回undefined
+      return new Promise((resolve,reject)=>{
+        const oldInfo = context.state.cartList.find(item=>item.iid === info.iid)
+      // 2. 加一或者新添加
+      if(oldInfo) { // 数量加一
+        // oldInfo.count +=1
+        context.commit('addCounter',oldInfo)
+        resolve('数量加一',200)
+      }else { // 添加新的商品
+        info.count = 1
+        // 点击
+        info.checked = false
+        // context.state.cartList.push(info)
+        context.commit('addToCart',info)
+        resolve('添加新商品')
+      }
+      })
+    }
   },
   modules: {
   }

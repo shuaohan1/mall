@@ -46,6 +46,9 @@ import {debounce} from '../components/content/utils'
 import {getHomeMultidata,getHomeGoods} from '../network/home'
 import Tabber from './Tabber.vue'
 export default {
+  destroyed() {
+    console.log('---------');
+  },
   name: 'home',
   data() {
     return {

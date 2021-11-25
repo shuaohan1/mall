@@ -15,21 +15,11 @@
         default: false
       }
     },
-    // data () {
-		//   return {
-		//     checked: this.isChecked
-    //   }
-    // },
     methods: {
       selectItem () {
         this.$emit('checkBtnClick')
       }
-    },
-    // watch: {
-		//   value: function (newValue) {
-    //     this.checked = newValue;
-    //   }
-    // }
+    }
 	}
 </script>
 

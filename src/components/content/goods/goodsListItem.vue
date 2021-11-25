@@ -1,7 +1,8 @@
 <template>
   <div class="goods-item">
     <!-- @load 在图片加载完成之后触发 -->
-    <img :src="showImage" @load="imageLoad" @click="itemClick">
+    <!-- v-lazy="showImage" 图片懒加载 -->
+    <img v-lazy="showImage" @load="imageLoad" @click="itemClick">
     <div class="goods-info">
       <p>{{goodsItem.title}}</p>
       <span class="price">{{goodsItem.price}}</span>
