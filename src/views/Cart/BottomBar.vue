@@ -5,14 +5,15 @@
                   :is-checked="isSelectAll"/>
     <span>全选</span>
     <span class="total-price">合计: {{totalPrice | currency}}</span>
-    <span class="buy-product" @click="product">结算({{checkLength}})</span>
+    <span class="buy-product" @click="product">去计算({{checkLength}})</span>
   </div>
 </template>
 
 <script>
 import CheckButton from './CheckButton.vue';
-import {Toast} from 'vant'
-import {mapGetters} from 'vuex'
+
+import {mapGetters} from 'vuex' 
+import { Toast } from 'vant';
 	export default {
 		name: "BottomBar",
     components: {
@@ -40,7 +41,7 @@ import {mapGetters} from 'vuex'
       //   }, 0).toFixed(2)  //toFixed(2)保留2位小数
       // },
 
-      // 结算中选中的商品数量
+      // 去计算 选中的商品数量
       checkLength(){
         // filter()过滤   返回过滤选中商品的长度
         return this.cartList.filter(item=>item.checked).length
@@ -98,13 +99,13 @@ import {mapGetters} from 'vuex'
       //     })
       //   }
       // }
-
-      // 点击结算 没有数量的话提示
       product(){
         if(!this.isSelectAll){
-          Toast('请选择商品')
+          // Toast('请选择商品')
+          this.$toast('请选择商品')
         }
       }
+
     }
 	}
 </script>
@@ -135,7 +136,7 @@ import {mapGetters} from 'vuex'
   .bottom-menu .total-price {
     margin-left: 50px;
     font-size: 16px;
-    color: #f00;
+    color: #666;
   }
 
   .bottom-menu .buy-product {

@@ -9,6 +9,7 @@
 import Scroll from '../../components/content/Scroll.vue' 
 import CartListItem from './CartListItem.vue'
 
+import {mapGetters} from 'vuex'
 export default {
   props:{
     cartList:{
@@ -19,6 +20,7 @@ export default {
     }
   },
   computed:{
+    ...mapGetters(['carList'])
   },
   components:{
     Scroll,

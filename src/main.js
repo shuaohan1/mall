@@ -5,18 +5,14 @@ import store from './store'
 
 import MintUI from 'mint-ui'
 import ElementUI from 'element-ui'
-
 import Vant from 'vant'
-import 'vant/lib/index.css';
 
+import 'vant/lib/index.css';
 import 'mint-ui/lib/style.css'
 // 导入mui框架样式
 import './lib/mui/css/mui.css'
 
 
-// 图片懒加载
-import VueLazyLoad from 'vue-lazyload'
-Vue.use(VueLazyLoad)
 
 Vue.use(MintUI)
 Vue.use(Vant)

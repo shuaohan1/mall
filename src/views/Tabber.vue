@@ -22,8 +22,4 @@ export default {
 }
 </script>
 <style scoped>
-.tabber {
-  position: relative;
-  height: 50px;
-}
 </style>

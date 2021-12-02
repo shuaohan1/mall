@@ -22,7 +22,4 @@ export default {
 }
 </script>
 <style scoped>
-.detail-botton {
-  height: 50px;
-}
 </style>
